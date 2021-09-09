@@ -1,62 +1,45 @@
 // import logo from './logo.svg';
 import './App.css';
-import Carousel from './Carousel.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './Header';
+import Home from './Home';
+import Main from './Main';
+import Profile from './Profile';
+import AboutUs from './AboutUs';
+import Footer from './Footer';
+import Garden from './Garden';
+import Seasonal from './Seasonal';
+import Interior from './Interior';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
-  const data = [
-    {
-      image: "Image/Covers/cover.jpg",
-    },
-    {
-      image: "Image/Covers/cover2.jpg",
-    },
-    {
-      image: "Image/Covers/cover3.jpg",
-    },
-    {
-      image: "Image/Covers/cover7.jpg",
-    },
-    {
-      image: "Image/Covers/cover5.jpg",
-    },
-    {
-      image: "Image/Covers/cover6.jpg",
-    },
-    {
-      image: "Image/Covers/cover4.jpg",
-    }
-  ];
-
-  const captionStyle = {
-    fontSize: '2em',
-    fontWeight: 'bold',
-  }
-  return (
-    <div className="App">
-      <div style={{ textAlign: "center" }}>
-        <div style={{
-          padding: "0 10px"
-        }}>
-          <Carousel
-            data={data}
-            time={5000}
-            width= "100%"
-            height="600px"
-            captionStyle={captionStyle}
-            radius="10px"
-            captionPosition="bottom"
-            automatic={false}
-            slideImageFit="cover"
-            style={{
-              textAlign: "center",
-              maxWidth: "1200px",
-              margin: "20px auto",
-            }}
-          />
-        </div>
+  return(
+      <Router>
+      <div className='container'>
+          {/* <header className='row'>
+            <div className='col-sm-12'>
+              <Main/>
+            </div>
+          </header> */}
+          <main className='row'>
+            <div className='col-sm-12'>
+            <Switch>
+              <Route exact path="/" component={Main} />
+              <Route exact path="/Profile" component={Profile} />
+              <Route exact path="/AboutUs" component={AboutUs} />
+              <Route exact path="/Garden" component={Garden} />
+              <Route exact path="/Interior" component={Interior} />
+              <Route exact path="/Seasonal" component={Seasonal} />
+            </Switch>
+            </div>
+          </main>
+          <footer className='row'>
+            <div className='col-sm-12'>
+              <Footer/>
+            </div>
+          </footer>
       </div>
-    </div>
+    </Router>
   );
 }
 
